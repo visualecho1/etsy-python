@@ -70,6 +70,10 @@ class TypeChecker(object):
     def check_float(self, value):
         if isinstance(value, int):
             return True, value
+        if isinstance(value, basestring) and isinstance(int(value), int):
+            return True, value
+        if isinstance(value, basestring) and isinstance(float(value), float):
+            return True, value
         return isinstance(value, float), value
 
     
